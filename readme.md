@@ -58,3 +58,10 @@ symfony serve --no-tls
 
 ## Fonctionnalitées 🔎
 
+- Authentification + oubli mdp avec mailer
+- Page liste des matchs par saison 
+-> Modif possible du score, des buteurs, passeurs et téléchargement de la feuille de match.
+-> Ajout et modifs des matchs possible seulement par l'admin
+- Page perso avec statistiques
+- Page Equipe
+- Page Contact
