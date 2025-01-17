@@ -1,0 +1,73 @@
+<header>
+    <!-- Sidebar -->
+    <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-dark">
+      <div class="position-sticky">
+        <div class="list-group list-group-flush mx-3 mt-4">
+          <a href="#" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
+            <i class="fa-solid fa-house fa-fw me-3"></i><span>Acceuil</span>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa-solid fa-hockey-puck fa-fw me-3"></i><span>Matchs</span>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa-solid fa-flag fa-fw me-3"></i><span>Equipes</span>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa-solid fa-users fa-fw me-3"></i></i><span>Joueurs</span>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fa-solid fa-list-ol fa-fw me-3"></i><span>Statistiques</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+    <!-- Sidebar -->
+
+    <!-- Navbar -->
+    <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light fixed-top">
+      <!-- Container wrapper -->
+      <div class="container-fluid">
+        <!-- Menu burger -->
+        <button data-mdb-button-init class="navbar-toggler" type="button" data-mdb-collapse-init
+          data-mdb-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- LOGO -->
+        <a class="navbar-brand" href="#">
+          <img src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp" height="25" alt="MDB Logo"
+            loading="lazy" />
+        </a>
+        <!-- Search form -->
+        <form class="d-none d-md-flex input-group w-auto my-auto">
+          <input autocomplete="off" type="search" class="form-control rounded"
+            placeholder='Rechercher...' style="min-width: 225px;" />
+          <span class="input-group-text border-0"><i class="fas fa-search"></i></span>
+        </form>
+
+        <!-- Lien à droite -->
+        <ul class="navbar-nav ms-auto d-flex flex-row">
+
+          <!-- Avatar -->
+          <li class="nav-item dropdown">
+            <a data-mdb-dropdown-init class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#"
+              id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (31).webp" class="rounded-circle" height="22"
+                alt="Avatar" loading="lazy" />
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+              <li>
+                <a class="dropdown-item" href="#">Mon profil</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">Deconnexion</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
+  </header>
