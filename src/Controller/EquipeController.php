@@ -2,17 +2,22 @@
 
 namespace App\Controller;
 
+use App\Repository\EquipeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 class EquipeController extends AbstractController
 {
-    #[Route('/equipe', name: 'equipe')]
-    public function index(): Response
+    #[Route('/equipes', name: 'equipes')]
+    public function equipes(EquipeRepository $repository): Response
     {
-        return $this->render('equipe/index.html.twig', [
-            'controller_name' => 'EquipeController',
+
+        $equipes = $repository->findAll();
+
+        return $this->render('equipe/equipes.html.twig', [
+            'controller_name' => 'LoisirsProspects - Equipes',
+            'equipes' => $equipes,
         ]);
     }
 }

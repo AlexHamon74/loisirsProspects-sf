@@ -8,11 +8,11 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class JoueurController extends AbstractController
 {
-    #[Route('/joueur', name: 'joueur')]
+    #[Route('/mon_equipe', name: 'mon_equipe')]
     public function index(): Response
     {
-        return $this->render('joueur/index.html.twig', [
-            'controller_name' => 'JoueurController',
+        return $this->render('joueur/mon_equipe.html.twig', [
+            'controller_name' => 'Mon Equipe',
         ]);
     }
 }

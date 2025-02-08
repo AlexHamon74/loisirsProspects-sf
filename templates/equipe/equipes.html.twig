@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello EquipeController!{% endblock %}
+{% block title %} {{controller_name}} {% endblock %}
 
 {% block body %}
 {% include 'assets/header.html.twig' %}
@@ -8,9 +8,15 @@
   <main>
     <div class="container pt-4">
 
-      <h1>Equipes</h1>
+      <h1>Equipes du championnat</h1>
       <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium ex tempore libero labore quod a, nam
         necessitatibus quam eligendi sequi quos deserunt, esse nulla possimus minima velit cumque? Voluptate, ipsum.</p>
+
+      {% for equipe in equipes %}
+
+        <h2>{{equipe.nom}}</h2>
+
+      {% endfor %}
 
     </div>
   </main>
