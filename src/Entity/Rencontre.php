@@ -36,6 +36,12 @@ class Rencontre
     #[ORM\Column(enumType: Type_rencontre::class)]
     private ?Type_rencontre $type_rencontre = null;
 
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $affiche = null;
+
+    #[ORM\Column]
+    private ?\DateTimeImmutable $updated_at = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -121,6 +127,30 @@ class Rencontre
     public function setTypeRencontre(Type_rencontre $type_rencontre): static
     {
         $this->type_rencontre = $type_rencontre;
+
+        return $this;
+    }
+
+    public function getAffiche(): ?string
+    {
+        return $this->affiche;
+    }
+
+    public function setAffiche(?string $affiche): static
+    {
+        $this->affiche = $affiche;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeImmutable
+    {
+        return $this->updated_at;
+    }
+
+    public function setUpdatedAt(\DateTimeImmutable $updated_at): static
+    {
+        $this->updated_at = $updated_at;
 
         return $this;
     }

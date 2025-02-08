@@ -31,9 +31,16 @@ class Equipe
     #[ORM\OneToMany(targetEntity: Rencontre::class, mappedBy: 'equipe_domicile')]
     private Collection $rencontres;
 
+    /**
+     * @var Collection<int, User>
+     */
+    #[ORM\OneToMany(targetEntity: User::class, mappedBy: 'equipe')]
+    private Collection $users;
+
     public function __construct()
     {
         $this->rencontres = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -101,6 +108,36 @@ class Equipe
             // set the owning side to null (unless already changed)
             if ($rencontre->getEquipeDomicile() === $this) {
                 $rencontre->setEquipeDomicile(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): static
+    {
+        if (!$this->users->contains($user)) {
+            $this->users->add($user);
+            $user->setEquipe($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): static
+    {
+        if ($this->users->removeElement($user)) {
+            // set the owning side to null (unless already changed)
+            if ($user->getEquipe() === $this) {
+                $user->setEquipe(null);
             }
         }
 

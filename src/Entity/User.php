@@ -69,6 +69,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(nullable: true, enumType: Position::class)]
     private ?Position $position = null;
 
+    #[ORM\ManyToOne(inversedBy: 'users')]
+    private ?Equipe $equipe = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -254,6 +257,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPosition(?Position $position): static
     {
         $this->position = $position;
+
+        return $this;
+    }
+
+    public function getEquipe(): ?Equipe
+    {
+        return $this->equipe;
+    }
+
+    public function setEquipe(?Equipe $equipe): static
+    {
+        $this->equipe = $equipe;
 
         return $this;
     }
