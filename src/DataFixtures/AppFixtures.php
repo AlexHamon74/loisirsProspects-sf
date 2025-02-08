@@ -20,7 +20,7 @@ class AppFixtures extends Fixture
             ->setName('Test')
             ->setPassword($this->hasher->hashPassword($user, 'bob123'))
             ->setUpdatedAt(new DateTimeImmutable());
-        $manager->persist($user);   
+        $manager->persist($user);
 
         $manager->flush();
     }
