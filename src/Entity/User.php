@@ -47,9 +47,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\NotBlank(message:'Ce champ est obligatoire')]
     private ?string $firstname = null;
 
-    #[ORM\Column(type: Types::DATE_IMMUTABLE, nullable: true)]
-    #[Assert\Date(message: "Ce champ n'est pas valide")]
-    private ?\DateTimeImmutable $birthdate = null;
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $birthdate = null;
 
     #[ORM\Column(nullable: true)]
     private ?int $height = null;
@@ -171,12 +170,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getBirthdate(): ?\DateTimeImmutable
+    public function getBirthdate(): ?\DateTimeInterface
     {
         return $this->birthdate;
     }
 
-    public function setBirthdate(?\DateTimeImmutable $birthdate): static
+    public function setBirthdate(?\DateTimeInterface $birthdate): static
     {
         $this->birthdate = $birthdate;
 
@@ -228,11 +227,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->profil_picture = $profil_picture;
 
-        if (null !== $profil_picture) {
-            // It is required that at least one field changes if you are using doctrine
-            // otherwise the event listeners won't be called and the file is lost
-            $this->updated_at = new \DateTimeImmutable();
-        }
+        // if (null !== $profil_picture) {
+        //     // It is required that at least one field changes if you are using doctrine
+        //     // otherwise the event listeners won't be called and the file is lost
+        //     $this->updated_at = new \DateTimeImmutable();
+        // }
 
         return $this;
     }

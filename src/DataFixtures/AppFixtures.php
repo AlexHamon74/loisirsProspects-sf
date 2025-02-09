@@ -69,7 +69,7 @@ class AppFixtures extends Fixture
                 ->setFirstname(self::PRENOM[$i % count(self::PRENOM)])
                 ->setName('Test')
                 ->setPassword($this->hasher->hashPassword($joueur, 'test123'))
-                ->setBirthdate(new DateTimeImmutable())
+                ->setBirthdate($generator->dateTimeBetween('-20 years'))
                 ->setHeight($generator->numberBetween(160, 200))
                 ->setWeight($generator->numberBetween(60, 100))
                 ->setJerseyNumber($generator->numberBetween(1, 99))
