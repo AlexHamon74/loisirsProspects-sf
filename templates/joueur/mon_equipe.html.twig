@@ -12,6 +12,21 @@
       <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium ex tempore libero labore quod a, nam
         necessitatibus quam eligendi sequi quos deserunt, esse nulla possimus minima velit cumque? Voluptate, ipsum.</p>
 
+      <div class="row">
+      {% for user in users %}
+        <div class="col-2">
+          <div class="border mb-4">
+            {{ user.firstname }}<br>
+            {% if user.equipe %}
+              {{ user.equipe.nom }}
+            {% else %}
+              No team assigned
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+      </div>
+
     </div>
   </main>
 {% endblock %}
