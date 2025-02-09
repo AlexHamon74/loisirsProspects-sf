@@ -14,7 +14,7 @@
 
       {% for equipe in equipes %}
 
-        <h2>{{equipe.nom}}</h2>
+        <a href="{{ path('equipe', {id:equipe.id}) }}"><h2>{{equipe.nom}}</h2></a>
 
       {% endfor %}
 

@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{controller_name}} {% endblock %}
+
+{% block body %}
+{% include 'assets/header.html.twig' %}
+
+  <main>
+    <div class="container pt-4">
+      <h1>{{equipe.nom}}</h1>
+      <h2>Joueurs</h2>
+      <ul>
+        {% for user in equipe.users %}
+          <li>{{ user.firstname }} {{ user.name }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </main>
+{% endblock %}
