@@ -44,6 +44,7 @@ class RegistrationController extends AbstractController
         }
 
         return $this->render('registration/register.html.twig', [
+            'controller_name' => "LoisirsProspects - S'enregistrer",
             'registrationForm' => $form,
         ]);
     }

@@ -9,10 +9,10 @@ use Symfony\Component\Routing\Attribute\Route;
 class MatchController extends AbstractController
 {
     #[Route('/matchs', name: 'matchs')]
-    public function index(): Response
+    public function matchs(): Response
     {
         return $this->render('match/match.html.twig', [
-            'controller_name' => 'MatchController',
+            'controller_name' => 'LoisirsProspects - Matchs',
         ]);
     }
 }
