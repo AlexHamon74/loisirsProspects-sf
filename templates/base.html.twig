@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="turbo-visit-control" content="reload">
         <title>{% block title %}Welcome!{% endblock %}</title>
 
         {% block stylesheets %}
@@ -13,18 +14,18 @@
             <link href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css" rel="stylesheet" />
         {% endblock %}
 
-        {% block importmap %}{{ importmap('app') }}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-
         {% block javascripts %}
+            {% block importmap %}{{ importmap('app') }}{% endblock %}
             <!-- jquery -->
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-            <!-- MDB JS -->
-            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/8.1.0/mdb.umd.min.js"></script>
             <!-- Datatables JS -->
             <script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
         {% endblock %}
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+            
+        <!-- MDB JS -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/8.1.0/mdb.umd.min.js"></script>
     </body>
 </html>
