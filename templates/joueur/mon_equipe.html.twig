@@ -1,33 +1,49 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} {{controller_name}} {% endblock %}
+{% block title %}
+	{{controller_name}}
+{% endblock %}
 
 {% block body %}
-{% include 'assets/header.html.twig' %}
+	{% include 'assets/header.html.twig' %}
 
-<main>
-  <div class="container pt-4">
-    <h1>Mon Equipe</h1>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium ex tempore libero labore quod a, nam
-      necessitatibus quam eligendi sequi quos deserunt, esse nulla possimus minima velit cumque? Voluptate, ipsum.</p>
+	<main>
+		<div class="container pt-4">
+			<h1>Mon Equipe</h1>
+			<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium ex tempore libero labore quod a, nam
+				      necessitatibus quam eligendi sequi quos deserunt, esse nulla possimus minima velit cumque? Voluptate, ipsum.</p>
 
-    <table id="usersTable" class="display" data-order='[[ 0, "asc" ]]'>
-      <thead>
-        <tr>
-          <th scope="col">Prenom</th>
-          <th scope="col">Nom</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for user in users %}
-          <tr>
-            <td>{{ user.firstname }}</td>
-            <td>{{ user.name }}</td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
-</main>
+			<table id="usersTable" class="display" data-order='[[ 0, "asc" ]]'>
+				<thead>
+					<tr>
+						<th scope="col">Prenom</th>
+						<th scope="col">Nom</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for user in users %}
+						<tr>
+							<td>{{ user.firstname }}</td>
+							<td>{{ user.name }}</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</main>
 
+	<script>
+		$('#usersTable').DataTable({
+            responsive: true,
+            language: {
+                info: 'Affichage de la page _PAGE_ sur _PAGES_',
+                infoEmpty: 'Aucun enregistrement disponible',
+                infoFiltered: '(filtré à partir de _MAX_ enregistrements au total)',
+                lengthMenu: 'Afficher _MENU_ lignes par page',
+                zeroRecords: 'Aucun résultat trouvé',
+                search: 'Rechercher:'
+            }
+        });
+	</script>
 {% endblock %}
+
