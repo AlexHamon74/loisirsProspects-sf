@@ -11,6 +11,10 @@ body{
 .hover-nav:hover {
     background-color: #2533498c;
 }
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    background-color: #2533498c;
+    color: #FBFBFB;
+}
 
 main {
     margin-top: 58px;
