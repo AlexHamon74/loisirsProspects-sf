@@ -1,3 +1,17 @@
+body{
+    background-color: #f3f4f7;
+}
+.bg-sombre{
+    background-color: #212631;
+}
+.bg-sombre a{
+    background-color: #212631;
+    color: #FBFBFB;
+}
+.hover-nav:hover {
+    background-color: #2533498c;
+}
+
 main {
     margin-top: 58px;
 }

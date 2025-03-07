@@ -1,74 +1,94 @@
 <header>
-    <!-- Sidebar -->
-    <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
-      <div class="position-sticky">
-        <div class="list-group list-group-flush mx-3 mt-4">
-          <a href="{{path('index')}}" class="list-group-item list-group-item-action py-2 ripple">
-            <i class="fa-solid fa-house fa-fw me-3"></i><span>Acceuil</span>
-          </a>
-          <a href="{{path('matchs')}}" class="list-group-item list-group-item-action py-2 ripple">
-            <i class="fa-solid fa-hockey-puck fa-fw me-3"></i><span>Matchs</span>
-          </a>
-          <a href="{{path('mon_equipe')}}" class="list-group-item list-group-item-action py-2 ripple">
-            <i class="fa-solid fa-house-flag fa-fw me-3"></i><span>Mon equipes</span>
-          </a>
-          <a href="#" class="list-group-item list-group-item-action py-2 ripple">
-            <i class="fa-solid fa-list-ol fa-fw me-3"></i><span>Mes statistiques</span>
-          </a>
+	<!-- Sidebar -->
+	<nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-sombre">
+		<div class="position-sticky d-flex flex-column justify-content-between h-100">
+			<div>
+				<div class="list-group list-group-flush mx-3 mt-4">
+					<h6 class="text-light opacity-75">MON EQUIPE</h6>
+					<a href="{{path('index')}}" class="list-group-item list-group-item p-2 ripple p-0 border-0 rounded hover-nav">
+						<i class="fa-solid fa-house fa-fw me-3"></i>
+						<span>Acceuil</span>
+					</a>
+					<a href="{{path('matchs')}}" class="list-group-item list-group-item p-2 ripple p-0 border-0 rounded hover-nav">
+						<i class="fa-solid fa-hockey-puck fa-fw me-3"></i>
+						<span>Matchs</span>
+					</a>
+					<a href="{{path('mon_equipe')}}" class="list-group-item list-group-item p-2 ripple p-0 border-0 rounded hover-nav">
+						<i class="fa-solid fa-house-flag fa-fw me-3"></i>
+						<span>Mon equipes</span>
+					</a>
+					<a href="{{ path('mon_profil', {id:app.user.id}) }}" class="list-group-item list-group-item p-2 ripple p-0 border-0 rounded hover-nav">
+						<i class="fa-solid fa-list-ol fa-fw me-3"></i>
+						<span>Mon profil</span>
+					</a>
+				</div>
 
-          <a href="{{path('equipes')}}" class="list-group-item list-group-item-action py-2 ripple mt-5">
-            <i class="fa-solid fa-flag fa-fw me-3"></i><span>Toutes les equipes</span>
-          </a>
-        </div>
-      </div>
-    </nav>
-    <!-- Sidebar -->
+				<div class="list-group list-group-flush mx-3 mt-4">
+					<h6 class="text-light opacity-75">CHAMPIONNAT D5</h6>
+					<a href="#" class="list-group-item list-group-item p-2 ripple p-0 border-0 rounded hover-nav">
+						<i class="fa-solid fa-calendar-days me-3"></i>
+						<span>Saison régulière</span>
+					</a>
+					{# <a href="#" class="list-group-item list-group-item p-2 ripple p-0 border-0 rounded hover-nav">
+						<i class="fa-solid fa-calendar-days me-3"></i>
+						<span>Playoffs</span>
+					</a> #}
+					<a href="#" class="list-group-item list-group-item p-2 ripple p-0 border-0 rounded hover-nav">
+						<i class="fa-solid fa-ranking-star me-3"></i>
+						<span>Classement</span>
+					</a>
+					<a href="{{path('equipes')}}" class="list-group-item list-group-item p-2 ripple p-0 border-0 rounded hover-nav">
+						<i class="fa-solid fa-flag fa-fw me-3"></i>
+						<span>Clubs engagés</span>
+					</a>
+					<a href="#" class="list-group-item list-group-item p-2 ripple p-0 border-0 rounded hover-nav">
+						<i class="fa-solid fa-network-wired me-3"></i>                    
+						<span>Formule</span>
+					</a>
+				</div>
+			</div>
 
-    <!-- Navbar -->
-    <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-      <!-- Container wrapper -->
-      <div class="container-fluid">
-        <!-- Menu burger -->
-        <button data-mdb-button-init class="navbar-toggler" type="button" data-mdb-collapse-init
-          data-mdb-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
-          aria-label="Toggle navigation">
-          <i class="fas fa-bars"></i>
-        </button>
+			<div class="list-group list-group-flush mx-3 mb-2">
+				<a href="/logout" class="list-group-item list-group-item p-2 ripple p-0 border-0 rounded hover-nav">
+					<i class="fa-solid fa-arrow-right-to-bracket me-3"></i>
+					<span>Deconnexion</span>
+				</a>
+			</div>
+		</div>
+	</nav>
 
-        <!-- LOGO -->
-        <a class="navbar-brand" href="#">
-          <img src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp" height="25" alt="MDB Logo"
-            loading="lazy" />
-        </a>
-        <!-- Search form -->
-        <form class="d-none d-md-flex input-group w-auto my-auto">
-          <input autocomplete="off" type="search" class="form-control rounded"
-            placeholder='Rechercher...' style="min-width: 225px;" />
-          <span class="input-group-text border-0"><i class="fas fa-search"></i></span>
-        </form>
+	<!-- Navbar -->
+	<nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-sombre fixed-top">
+		<div class="container-fluid">
+			<!-- Menu burger -->
+			<button data-mdb-button-init class="navbar-toggler text-light" type="button" data-mdb-collapse-init data-mdb-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+				<i class="fas fa-bars"></i>
+			</button>
 
-        <!-- Lien à droite -->
-        <ul class="navbar-nav ms-auto d-flex flex-row">
+			<!-- LOGO -->
+			<a class="navbar-brand" href="#">
+				<img src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp" height="25" alt="MDB Logo" loading="lazy"/>
+			</a>
+			<!-- Search form -->
+            <form class="d-none d-md-flex input-group w-auto my-auto bg-sombre">
+                <div class="input-group">
+                    <div class="form-outline" data-mdb-input-init>
+                        <input type="search" id="form1" class="form-control text-light"/>
+                        <label class="form-label text-light" for="form1">Search</label>
+                    </div>
+                    <button type="button" class="btn btn-primary" data-mdb-ripple-init>
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </form>
 
-          <!-- Avatar -->
-          <li class="nav-item dropdown">
-            <a data-mdb-dropdown-init class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#"
-              id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-              <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (31).webp" class="rounded-circle" height="22"
-                alt="Avatar" loading="lazy" />
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-              <li>
-                <a class="dropdown-item" href="{{ path('mon_profil', {id:app.user.id}) }}">Mon profil</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="/logout">Deconnexion</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-      <!-- Container wrapper -->
-    </nav>
-    <!-- Navbar -->
-  </header>
+			<!-- Lien à droite -->
+			<ul class="navbar-nav ms-auto d-flex flex-row"></ul>
+		</div>
+	</nav>
+</header>
+
+
+
+
+
