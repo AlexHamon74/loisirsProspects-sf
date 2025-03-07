@@ -1,22 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} {{controller_name}} {% endblock %}
+{% block title %}
+	{{controller_name}}
+{% endblock %}
 
 {% block body %}
 	{% include 'assets/header.html.twig' %}
 
 	<main>
-		<div class="container pt-4">
-        {% include "assets/flash.html.twig" %}
-
+		<div class="container-fluid pt-4">
+			{% include "assets/flash.html.twig" %}
 			<h1>Mon Profil</h1>
+			<!-- Pills navs -->
+			<ul class="nav nav-pills mb-3" id="ex1" role="tablist">
+				<li class="nav-item" role="presentation">
+					<a data-mdb-pill-init class="nav-link active" id="stats_indiv" href="#_stats_indiv" role="tab" aria-controls="stats_indiv" aria-selected="true">Statistiques individuelles</a>
+				</li>
+				<li class="nav-item" role="presentation">
+					<a data-mdb-pill-init class="nav-link" id="infos_perso" href="#_infos_perso" role="tab" aria-controls="infos_perso" aria-selected="false">Informations personnelles</a>
+				</li>
+			</ul>
+			<!-- Pills navs -->
 
-			<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium ex tempore libero labore quod a, nam
-				necessitatibus quam eligendi sequi quos deserunt, esse nulla possimus minima velit cumque? Voluptate, ipsum.</p>
+			<!-- Pills content -->
+			<div class="tab-content" id="ex1-content">
+				<div class="tab-pane fade show active" id="_stats_indiv" role="tabpanel" aria-labelledby="stats_indiv">
+					stats_indiv content
+				</div>
+				<div class="tab-pane fade" id="_infos_perso" role="tabpanel" aria-labelledby="infos_perso">
+					{{form(form)}}
+				</div>
+			</div>
+			<!-- Pills content -->
 
-            {{form(form)}}
-
-		</div>
-	</main>
-{% endblock %}
+			</div>
+		</main>
+	{% endblock %}
 
