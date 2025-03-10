@@ -5,12 +5,14 @@ namespace App\DataFixtures;
 use App\Entity\Saison;
 use App\Entity\User;
 use App\Entity\Equipe;
+use App\Entity\Rencontre;
 use DateTimeImmutable;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Faker\Factory;
 use App\Enum\Position;
+use App\Enum\Type_rencontre;
 
 class AppFixtures extends Fixture
 {
@@ -50,6 +52,9 @@ class AppFixtures extends Fixture
             $equipes[] = $equipe;
         }
 
+        // Envoi des modification en base pour avoir accès aux ID
+        $manager->flush();
+
         // Utilisateur Admin
         $admin_user = new User();
         $admin_user->setEmail('admin@test.com')
@@ -78,6 +83,21 @@ class AppFixtures extends Fixture
                 ->setUpdatedAt(new DateTimeImmutable());
 
             $manager->persist($joueur);
+        }
+
+        // Rencontres
+        $typeRencontre = Type_rencontre::cases();
+        for($i=0; $i<10; $i++) {
+            $rencontre = new Rencontre();
+            $rencontre->setDate(new \DateTimeImmutable())
+                ->setSaison($saison)
+                ->setEquipeDomicile($equipes[$i % count($equipes)])
+                ->setEquipeExterieur($equipes[($i + 1) % count($equipes)])
+                ->setTypeRencontre($typeRencontre[0])
+                ->setDate(new DateTimeImmutable())
+                ->setUpdatedAt(new DateTimeImmutable());
+
+            $manager->persist($rencontre);
         }
 
         // Envoi des modification en base
