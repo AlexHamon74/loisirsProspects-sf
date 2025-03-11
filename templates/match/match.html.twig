@@ -1,17 +1,73 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} {{controller_name}} {% endblock %}
+{% block title %}
+	{{controller_name}}
+{% endblock %}
 
 {% block body %}
-{% include 'assets/header.html.twig' %}
+	{% include 'assets/header.html.twig' %}
 
-  <main>
-    <div class="container pt-4">
+	<main>
+		<div class="container pt-4">
+			<h1>Matchs</h1>
 
-      <h1>Matchs</h1>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium ex tempore libero labore quod a, nam
-        necessitatibus quam eligendi sequi quos deserunt, esse nulla possimus minima velit cumque? Voluptate, ipsum.</p>
-
-    </div>
-  </main>
+			<div class="row">
+                {% for match in matchs %}
+				<div class="col-md-6 col-12">
+                    <div class="card p-2 mb-4">
+                        <div class="row mb-2">
+                            <div class="col-7">
+                                Le {{ match.date|date('d/m/Y') }} à {{ match.heure|date('H:i') }}
+                            </div>
+                            <div class="col-5 text-end">
+                                {% if match.typeRencontre.value == "Championnat" %}
+                                    <span class="badge badge-primary">{{ match.typeRencontre.value }}</span>
+                                {% elseif match.typeRencontre.value == "Amical" %}
+                                    <span class="badge badge-secondary">{{ match.typeRencontre.value }}</span>
+                                {% elseif match.typeRencontre.value == "Coupe" %}
+                                    <span class="badge badge-warning">{{ match.typeRencontre.value }}</span>
+                                {% elseif match.typeRencontre.value == "Playoffs" %}
+                                    <span class="badge badge-success">{{ match.typeRencontre.value }}</span>
+                                {% elseif match.typeRencontre.value == "Playdowns" %}
+                                    <span class="badge badge-danger">{{ match.typeRencontre.value }}</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="row align-items-center">
+                            <div class="col-6 mb-2 d-flex align-items-center">
+                                {% if match.equipeDomicile.logo %}
+                                    <img src="{{ asset('images/' ~ match.equipeDomicile.logo) }}" class="img-fluid w-25 me-2">
+                                    <span>{{ match.equipeDomicile.nom }}</span>
+                                {% else %}
+                                    <img src="{{ asset('images/logoDefault.png') }}" class="img-fluid w-25 me-2">
+                                    <span>{{ match.equipeDomicile.nom }}</span>
+                                {% endif %}
+                            </div>
+                            <div class="col-6">
+                                {% if match.scoreEquipeDomicile %}
+                                {{ match.scoreEquipeDomicile }}
+                                {% endif %}
+                            </div>
+                            <div class="col-6">
+                                {% if match.equipeExterieur.logo %}
+                                    <img src="{{ asset('images/' ~ match.equipeDomicile.logo) }}" class="img-fluid w-25">
+                                    <span>{{ match.equipeExterieur.nom }}</span>
+                                {% else %}
+                                    <img src={{ asset('images/logoDefault.png') }} class="img-fluid w-25">
+                                    <span>{{match.equipeExterieur.nom}}</span>
+                                {% endif %}      
+                            </div>
+                            <div class="col-6">
+                                {% if match.scoreEquipeExterieur %}
+                                {{ match.scoreEquipeExterieur }}                                   
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+			</div>
+		</div>
+	</main>
 {% endblock %}
+

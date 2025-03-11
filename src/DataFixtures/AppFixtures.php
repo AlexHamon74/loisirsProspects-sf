@@ -95,6 +95,8 @@ class AppFixtures extends Fixture
                 ->setEquipeExterieur($equipes[($i + 1) % count($equipes)])
                 ->setTypeRencontre($typeRencontre[0])
                 ->setDate(new DateTimeImmutable())
+                ->setHeure(new DateTimeImmutable())
+                ->setLieu($generator->word())
                 ->setUpdatedAt(new DateTimeImmutable());
 
             $manager->persist($rencontre);

@@ -42,6 +42,12 @@ class Rencontre
     #[ORM\Column]
     private ?\DateTimeImmutable $updated_at = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $lieu = null;
+
+    #[ORM\Column(type: Types::TIME_IMMUTABLE)]
+    private ?\DateTimeImmutable $heure = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -151,6 +157,30 @@ class Rencontre
     public function setUpdatedAt(\DateTimeImmutable $updated_at): static
     {
         $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+    public function getLieu(): ?string
+    {
+        return $this->lieu;
+    }
+
+    public function setLieu(string $lieu): static
+    {
+        $this->lieu = $lieu;
+
+        return $this;
+    }
+
+    public function getHeure(): ?\DateTimeImmutable
+    {
+        return $this->heure;
+    }
+
+    public function setHeure(\DateTimeImmutable $heure): static
+    {
+        $this->heure = $heure;
 
         return $this;
     }

@@ -8,4 +8,5 @@ enum Type_rencontre: string
     case AMICAL = 'Amical';
     case COUPE = 'Coupe';
     case PLAYOFFS = 'Playoffs';
+    case PLAYDOWNS = 'Playdowns';
 }
