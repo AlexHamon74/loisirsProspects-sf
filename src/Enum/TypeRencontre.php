@@ -2,7 +2,7 @@
 
 namespace App\Enum;
 
-enum Type_rencontre: string
+enum TypeRencontre: string
 {
     case CHAMPIONNAT = 'Championnat';
     case AMICAL = 'Amical';

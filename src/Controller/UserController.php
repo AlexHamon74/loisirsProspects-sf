@@ -12,28 +12,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-class JoueurController extends AbstractController
+class UserController extends AbstractController
 {
-    #[Route('/mon_equipe', name: 'mon_equipe')]
-    public function mon_equipe(UserRepository $userRepository): Response
-    {
-        $user = $this->getUser();
-        
-        if (!$user instanceof User) {
-            throw $this->createNotFoundException("Utilisateur non trouvé.");
-        }
-
-        $equipe = $user->getEquipe();
-        $users = $userRepository->findBy(['equipe' => $equipe]);
-
-        return $this->render('joueur/mon_equipe.html.twig', [
-            'users' => $users,
-            'controller_name' => 'LoisirsProspects - Mon Equipe',
-        ]);
-    }
-
     #[Route('/mon_profil/{id}', name: 'mon_profil')]
-    public function mon_profil(User $user, EntityManagerInterface $em, Request $request): Response
+    public function monProfil(User $user, EntityManagerInterface $em, Request $request): Response
     {
 
         $form = $this->createForm(MonProfilType::class, $user);
@@ -44,10 +26,10 @@ class JoueurController extends AbstractController
             $em->persist($user);
             $em->flush();
             $this->addFlash('success', 'Votre profil à bien été édité');
-            return $this->redirectToRoute('index');
+            return $this->redirectToRoute('accueil');
         }
 
-        return $this->render('joueur/mon_profil.html.twig', [
+        return $this->render('user/mon_profil.html.twig', [
             'controller_name' => 'LoisirsProspects - Mon Profil',
             'user' => $user,
             'form' => $form

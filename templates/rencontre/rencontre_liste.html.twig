@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{controller_name}}
+{% endblock %}
+
+{% block body %}
+	{% include 'assets/header.html.twig' %}
+
+	<main>
+		<div class="container pt-4">
+			<h1>Matchs</h1>
+
+			<div class="row">
+                {% for rencontre in rencontres %}
+				<div class="col-md-6 col-12">
+                    <div class="card p-2 mb-4">
+                        <div class="row mb-2">
+                            <div class="col-7">
+                                Le {{ rencontre.date|date('d/m/Y') }} à {{ rencontre.heure|date('H:i') }}
+                            </div>
+                            <div class="col-5 text-end">
+                                {% if rencontre.typeRencontre.value == "Championnat" %}
+                                    <span class="badge badge-primary">{{ rencontre.typeRencontre.value }}</span>
+                                {% elseif rencontre.typeRencontre.value == "Amical" %}
+                                    <span class="badge badge-secondary">{{ rencontre.typeRencontre.value }}</span>
+                                {% elseif rencontre.typeRencontre.value == "Coupe" %}
+                                    <span class="badge badge-warning">{{ rencontre.typeRencontre.value }}</span>
+                                {% elseif rencontre.typeRencontre.value == "Playoffs" %}
+                                    <span class="badge badge-success">{{ rencontre.typeRencontre.value }}</span>
+                                {% elseif rencontre.typeRencontre.value == "Playdowns" %}
+                                    <span class="badge badge-danger">{{ rencontre.typeRencontre.value }}</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="row align-items-center">
+                            <div class="col-6 mb-2 d-flex align-items-center">
+                                {% if rencontre.equipeDomicile.logo %}
+                                    <img src="{{ asset('images/' ~ rencontre.equipeDomicile.logo) }}" class="img-fluid w-25 me-2">
+                                    <span>{{ rencontre.equipeDomicile.nom }}</span>
+                                {% else %}
+                                    <img src="{{ asset('images/logoDefault.png') }}" class="img-fluid w-25 me-2">
+                                    <span>{{ rencontre.equipeDomicile.nom }}</span>
+                                {% endif %}
+                            </div>
+                            <div class="col-6">
+                                {% if rencontre.scoreEquipeDomicile %}
+                                {{ rencontre.scoreEquipeDomicile }}
+                                {% endif %}
+                            </div>
+                            <div class="col-6">
+                                {% if rencontre.equipeExterieur.logo %}
+                                    <img src="{{ asset('images/' ~ rencontre.equipeDomicile.logo) }}" class="img-fluid w-25">
+                                    <span>{{ rencontre.equipeExterieur.nom }}</span>
+                                {% else %}
+                                    <img src={{ asset('images/logoDefault.png') }} class="img-fluid w-25">
+                                    <span>{{rencontre.equipeExterieur.nom}}</span>
+                                {% endif %}      
+                            </div>
+                            <div class="col-6">
+                                {% if rencontre.scoreEquipeExterieur %}
+                                {{ rencontre.scoreEquipeExterieur }}                                   
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+			</div>
+		</div>
+	</main>
+{% endblock %}
+

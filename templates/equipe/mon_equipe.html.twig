@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{controller_name}}
+{% endblock %}
+
+{% block body %}
+	{% include 'assets/header.html.twig' %}
+
+	<main>
+		<div class="container-fluid pt-4">
+			<h1>Mon Equipe</h1>
+			<!-- Pills navs -->
+			<ul class="nav nav-pills nav-justified mb-4" id="ex1" role="tablist">
+				<li class="nav-item" role="presentation">
+					<a data-mdb-pill-init class="nav-link active" id="info_generales" href="#_info_generales" role="tab" aria-controls="info_generales" aria-selected="true">Informations générales</a>
+				</li>
+				<li class="nav-item" role="presentation">
+					<a data-mdb-pill-init class="nav-link" id="effectif" href="#_effectif" role="tab" aria-controls="effectif" aria-selected="false">Effectif</a>
+				</li>
+				<li class="nav-item" role="presentation">
+					<a data-mdb-pill-init class="nav-link" id="stats_indiv" href="#_stats_indiv" role="tab" aria-controls="stats_indiv" aria-selected="false">Statistiques individuelles</a>
+				</li>
+				<li class="nav-item" role="presentation">
+					<a data-mdb-pill-init class="nav-link" id="stats_collectives" href="#_stats_collectives" role="tab" aria-controls="stats_collectives" aria-selected="false">Statistiques collectives</a>
+				</li>
+			</ul>
+			<hr class="hr hr-blurry" />
+			<!-- Pills navs -->
+
+			<!-- Pills content -->
+			<div class="tab-content" id="ex2-content">
+				<div class="tab-pane fade show active" id="_info_generales" role="tabpanel" aria-labelledby="info_generales">
+					info_generales content
+				</div>
+				<div class="tab-pane fade" id="_effectif" role="tabpanel" aria-labelledby="effectif">
+					<table id="usersTable" class="hover row-border w-100 stripe">
+						<thead>
+							<tr>
+								<th scope="col">Prenom</th>
+								<th scope="col">Nom</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for user in users %}
+								<tr>
+									<td>{{ user.firstname }}</td>
+									<td>{{ user.name }}</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+				<div class="tab-pane fade" id="_stats_indiv" role="tabpanel" aria-labelledby="stats_indiv">
+					stats_indiv content
+				</div>
+				<div class="tab-pane fade" id="_stats_collectives" role="tabpanel" aria-labelledby="stats_collectives">
+					stats_collectives content
+				</div>
+			</div>
+			<!-- Pills content -->
+
+		</div>
+	</main>
+
+	<script>
+		$('#usersTable').DataTable({
+			responsive: true,
+			language: {
+			info: 'Affichage de la page _PAGE_ sur _PAGES_',
+			infoEmpty: 'Aucun enregistrement disponible',
+			infoFiltered: '(filtré à partir de _MAX_ enregistrements au total)',
+			lengthMenu: 'Afficher _MENU_ lignes par page',
+			zeroRecords: 'Aucun résultat trouvé',
+			search: 'Rechercher:'
+			}
+		});
+	</script>
+{% endblock %}
+

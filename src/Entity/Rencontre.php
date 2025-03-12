@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use App\Enum\Type_rencontre;
+use App\Enum\TypeRencontre;
 use App\Repository\RencontreRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -33,8 +33,8 @@ class Rencontre
     #[ORM\Column(nullable: true)]
     private ?int $score_equipe_exterieur = null;
 
-    #[ORM\Column(enumType: Type_rencontre::class)]
-    private ?Type_rencontre $type_rencontre = null;
+    #[ORM\Column(enumType: TypeRencontre::class)]
+    private ?TypeRencontre $type_rencontre = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $affiche = null;
@@ -125,12 +125,12 @@ class Rencontre
         return $this;
     }
 
-    public function getTypeRencontre(): ?Type_rencontre
+    public function getTypeRencontre(): ?TypeRencontre
     {
         return $this->type_rencontre;
     }
 
-    public function setTypeRencontre(Type_rencontre $type_rencontre): static
+    public function setTypeRencontre(TypeRencontre $type_rencontre): static
     {
         $this->type_rencontre = $type_rencontre;
 

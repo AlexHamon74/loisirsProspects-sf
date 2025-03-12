@@ -12,7 +12,7 @@ use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Faker\Factory;
 use App\Enum\Position;
-use App\Enum\Type_rencontre;
+use App\Enum\TypeRencontre;
 
 class AppFixtures extends Fixture
 {
@@ -86,7 +86,7 @@ class AppFixtures extends Fixture
         }
 
         // Rencontres
-        $typeRencontre = Type_rencontre::cases();
+        $typeRencontre = TypeRencontre::cases();
         for($i=0; $i<10; $i++) {
             $rencontre = new Rencontre();
             $rencontre->setDate(new \DateTimeImmutable())

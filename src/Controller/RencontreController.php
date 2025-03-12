@@ -8,10 +8,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-class MatchController extends AbstractController
+class RencontreController extends AbstractController
 {
-    #[Route('/matchs', name: 'matchs')]
-    public function matchs(RencontreRepository $rencontre): Response
+    #[Route('/matchs', name: 'rencontre_liste')]
+    public function rencontreListe(RencontreRepository $rencontre): Response
     {
         $user = $this->getUser();
 
@@ -21,14 +21,14 @@ class MatchController extends AbstractController
 
         $equipe = $user->getEquipe();
 
-        $matchs = $rencontre->createQueryBuilder('rencontre')
+        $rencontres = $rencontre->createQueryBuilder('rencontre')
             ->where('rencontre.equipe_domicile = :equipe OR rencontre.equipe_exterieur = :equipe')
             ->setParameter('equipe', $equipe)
             ->getQuery()
             ->getResult();
 
-        return $this->render('match/match.html.twig', [
-            'matchs' => $matchs,
+        return $this->render('rencontre/rencontre_liste.html.twig', [
+            'rencontres' => $rencontres,
             'controller_name' => 'LoisirsProspects - Matchs',
         ]);
     }
