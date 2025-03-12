@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Enum\Position;
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -70,6 +72,31 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\ManyToOne(inversedBy: 'users')]
     private ?Equipe $equipe = null;
+
+    /**
+     * @var Collection<int, But>
+     */
+    #[ORM\OneToMany(targetEntity: But::class, mappedBy: 'user')]
+    private Collection $buts;
+
+    /**
+     * @var Collection<int, Assistance>
+     */
+    #[ORM\OneToMany(targetEntity: Assistance::class, mappedBy: 'user')]
+    private Collection $assistances;
+
+    /**
+     * @var Collection<int, Participation>
+     */
+    #[ORM\OneToMany(targetEntity: Participation::class, mappedBy: 'user')]
+    private Collection $participations;
+
+    public function __construct()
+    {
+        $this->buts = new ArrayCollection();
+        $this->assistances = new ArrayCollection();
+        $this->participations = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -268,6 +295,96 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setEquipe(?Equipe $equipe): static
     {
         $this->equipe = $equipe;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, But>
+     */
+    public function getButs(): Collection
+    {
+        return $this->buts;
+    }
+
+    public function addBut(But $but): static
+    {
+        if (!$this->buts->contains($but)) {
+            $this->buts->add($but);
+            $but->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBut(But $but): static
+    {
+        if ($this->buts->removeElement($but)) {
+            // set the owning side to null (unless already changed)
+            if ($but->getUser() === $this) {
+                $but->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Assistance>
+     */
+    public function getAssistances(): Collection
+    {
+        return $this->assistances;
+    }
+
+    public function addAssistance(Assistance $assistance): static
+    {
+        if (!$this->assistances->contains($assistance)) {
+            $this->assistances->add($assistance);
+            $assistance->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAssistance(Assistance $assistance): static
+    {
+        if ($this->assistances->removeElement($assistance)) {
+            // set the owning side to null (unless already changed)
+            if ($assistance->getUser() === $this) {
+                $assistance->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Participation>
+     */
+    public function getParticipations(): Collection
+    {
+        return $this->participations;
+    }
+
+    public function addParticipation(Participation $participation): static
+    {
+        if (!$this->participations->contains($participation)) {
+            $this->participations->add($participation);
+            $participation->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeParticipation(Participation $participation): static
+    {
+        if ($this->participations->removeElement($participation)) {
+            // set the owning side to null (unless already changed)
+            if ($participation->getUser() === $this) {
+                $participation->setUser(null);
+            }
+        }
 
         return $this;
     }

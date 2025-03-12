@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Enum\TypeRencontre;
 use App\Repository\RencontreRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -47,6 +49,31 @@ class Rencontre
 
     #[ORM\Column(type: Types::TIME_IMMUTABLE)]
     private ?\DateTimeImmutable $heure = null;
+
+    /**
+     * @var Collection<int, But>
+     */
+    #[ORM\OneToMany(targetEntity: But::class, mappedBy: 'rencontre')]
+    private Collection $buts;
+
+    /**
+     * @var Collection<int, Assistance>
+     */
+    #[ORM\OneToMany(targetEntity: Assistance::class, mappedBy: 'rencontre')]
+    private Collection $assistances;
+
+    /**
+     * @var Collection<int, Participation>
+     */
+    #[ORM\OneToMany(targetEntity: Participation::class, mappedBy: 'rencontre')]
+    private Collection $participations;
+
+    public function __construct()
+    {
+        $this->buts = new ArrayCollection();
+        $this->assistances = new ArrayCollection();
+        $this->participations = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -181,6 +208,96 @@ class Rencontre
     public function setHeure(\DateTimeImmutable $heure): static
     {
         $this->heure = $heure;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, But>
+     */
+    public function getButs(): Collection
+    {
+        return $this->buts;
+    }
+
+    public function addBut(But $but): static
+    {
+        if (!$this->buts->contains($but)) {
+            $this->buts->add($but);
+            $but->setRencontre($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBut(But $but): static
+    {
+        if ($this->buts->removeElement($but)) {
+            // set the owning side to null (unless already changed)
+            if ($but->getRencontre() === $this) {
+                $but->setRencontre(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Assistance>
+     */
+    public function getAssistances(): Collection
+    {
+        return $this->assistances;
+    }
+
+    public function addAssistance(Assistance $assistance): static
+    {
+        if (!$this->assistances->contains($assistance)) {
+            $this->assistances->add($assistance);
+            $assistance->setRencontre($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAssistance(Assistance $assistance): static
+    {
+        if ($this->assistances->removeElement($assistance)) {
+            // set the owning side to null (unless already changed)
+            if ($assistance->getRencontre() === $this) {
+                $assistance->setRencontre(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Participation>
+     */
+    public function getParticipations(): Collection
+    {
+        return $this->participations;
+    }
+
+    public function addParticipation(Participation $participation): static
+    {
+        if (!$this->participations->contains($participation)) {
+            $this->participations->add($participation);
+            $participation->setRencontre($this);
+        }
+
+        return $this;
+    }
+
+    public function removeParticipation(Participation $participation): static
+    {
+        if ($this->participations->removeElement($participation)) {
+            // set the owning side to null (unless already changed)
+            if ($participation->getRencontre() === $this) {
+                $participation->setRencontre(null);
+            }
+        }
 
         return $this;
     }
