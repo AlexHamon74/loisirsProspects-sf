@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Attribute\Route;
 class RencontreController extends AbstractController
 {
     #[Route('/matchs', name: 'rencontre_liste')]
-    public function rencontreListe(RencontreRepository $rencontre): Response
+    public function rencontreListe(RencontreRepository $rencontreRepository): Response
     {
         $user = $this->getUser();
 
@@ -21,7 +21,7 @@ class RencontreController extends AbstractController
 
         $equipe = $user->getEquipe();
 
-        $rencontres = $rencontre->createQueryBuilder('rencontre')
+        $rencontres = $rencontreRepository->createQueryBuilder('rencontre')
             ->where('rencontre.equipe_domicile = :equipe OR rencontre.equipe_exterieur = :equipe')
             ->setParameter('equipe', $equipe)
             ->getQuery()
@@ -30,6 +30,17 @@ class RencontreController extends AbstractController
         return $this->render('rencontre/rencontre_liste.html.twig', [
             'rencontres' => $rencontres,
             'controller_name' => 'LoisirsProspects - Matchs',
+        ]);
+    }
+
+    #[Route('/saison_reguliere', name:'saison_reguliere')]
+    public function saisonReguliere(RencontreRepository $rencontreRepository): Response
+    {
+        $rencontres = $rencontreRepository->findAll();
+
+        return $this->render('rencontre/saison_reguliere.html.twig', [
+            'rencontres' => $rencontres,
+            'controller_name' => 'LoisirsProspects - Saison Régulière'
         ]);
     }
 }
