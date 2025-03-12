@@ -44,7 +44,7 @@
                                 {% endif %}
                             </div>
                             <div class="col-6">
-                                {% if rencontre.scoreEquipeDomicile %}
+                                {% if rencontre.scoreEquipeDomicile is not null %}
                                 {{ rencontre.scoreEquipeDomicile }}
                                 {% endif %}
                             </div>
@@ -58,7 +58,7 @@
                                 {% endif %}      
                             </div>
                             <div class="col-6">
-                                {% if rencontre.scoreEquipeExterieur %}
+                                {% if rencontre.scoreEquipeExterieur is not null %}
                                 {{ rencontre.scoreEquipeExterieur }}                                   
                                 {% endif %}
                             </div>
