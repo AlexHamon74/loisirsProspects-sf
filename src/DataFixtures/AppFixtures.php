@@ -20,7 +20,7 @@ class AppFixtures extends Fixture
 
     const JOUEURS_VALENCE = [
         [
-            ['ROLE_ADMIN'], 'jan@dlouhy.fr', 'test123', 'Dlouhy', 'Jan', '1975-09-27', 185, 87, 2, NULL, 'now', 'Défenseur'
+            ['ROLE_RESPONSABLE'], 'jan@dlouhy.fr', 'test123', 'Dlouhy', 'Jan', '1975-09-27', 185, 87, 2, NULL, 'now', 'Défenseur'
         ],
         [
             ['ROLE_USER'], 'enzo@dousseau.fr', 'test123', 'Dousseau', 'Enzo', '2000-02-05', 181, 65, 10, NULL, 'now', 'Défenseur'
@@ -133,8 +133,20 @@ class AppFixtures extends Fixture
             $equipes[$nom_equipe] = $equipe;
         }
 
-        // Envoi des modification en base pour avoir accès aux ID
+        // Envoi des modification en base pour avoir accès aux ID des équipes
         $manager->flush();
+
+        // Ajout de l'admin
+        $admin = new User();
+        $admin->setRoles(['ROLE_ADMIN'])
+            ->setEmail('admin@test.com')
+            ->setPassword('admin123')
+            ->setName('admin')
+            ->setFirstname('admin')
+            ->setUpdatedAt(new DateTimeImmutable());
+
+        $manager->persist($admin);
+
 
         // Joueurs de Valence
         foreach(self::JOUEURS_VALENCE as $joueurData) {
@@ -156,7 +168,7 @@ class AppFixtures extends Fixture
             $manager->persist($joueur);
         }
 
-        // Rencontres de Valence et statistiques
+        // Rencontres de Valence
         foreach(self::RENCONTRES_VALENCE as $rencontreData) {
             $rencontre = new Rencontre();
             $rencontre->setSaison($saison)
