@@ -37,15 +37,29 @@
 					<table id="usersTable" class="hover row-border w-100 stripe">
 						<thead>
 							<tr>
-								<th scope="col">Prenom</th>
-								<th scope="col">Nom</th>
+								<th scope="col">N°</th>
+								<th scope="col">Photo</th>
+								<th scope="col">Joueur</th>
+								<th scope="col">Pos</th>
+								<th scope="col">Taille</th>
+								<th scope="col">Poids</th>
+								<th scope="col">Né le</th>
+								<th scope="col">Lancer</th>
+								<th scope="col">Nationnalité</th>
 							</tr>
 						</thead>
 						<tbody>
 							{% for user in users %}
 								<tr>
-									<td>{{ user.firstname }}</td>
-									<td>{{ user.name }}</td>
+									<td>{{ user.jerseyNumber }}</td>
+									<td>{{ user.profilPicture }}</td>
+									<td>{{ user.firstname }} {{ user.name }}</td>
+									<td>{{ user.position.value }}</td>
+									<td>{{ user.height }}</td>
+									<td>{{ user.weight }}</td>
+									<td>{{ user.birthdate|date('Y') }}</td>
+									<td>Todo</td>
+									<td>Todo</td>
 								</tr>
 							{% endfor %}
 						</tbody>
@@ -66,13 +80,17 @@
 	<script>
 		$('#usersTable').DataTable({
 			responsive: true,
+			columnDefs: [
+				{ type: 'html', targets: '_all' },
+				{ className: 'dt-type-numeric', targets: [] }
+			],
 			language: {
-			info: 'Affichage de la page _PAGE_ sur _PAGES_',
-			infoEmpty: 'Aucun enregistrement disponible',
-			infoFiltered: '(filtré à partir de _MAX_ enregistrements au total)',
-			lengthMenu: 'Afficher _MENU_ lignes par page',
-			zeroRecords: 'Aucun résultat trouvé',
-			search: 'Rechercher:'
+				info: 'Affichage de la page _PAGE_ sur _PAGES_',
+				infoEmpty: 'Aucun enregistrement disponible',
+				infoFiltered: '(filtré à partir de _MAX_ enregistrements au total)',
+				lengthMenu: 'Afficher _MENU_ lignes par page',
+				zeroRecords: 'Aucun résultat trouvé',
+				search: 'Rechercher:'
 			}
 		});
 	</script>
