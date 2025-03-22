@@ -1,25 +1,74 @@
 {% extends 'base.html.twig' %}
 
 {% block title %} {{controller_name}} {% endblock %}
+{% form_theme registrationForm 'bootstrap_5_layout.html.twig' %}
 
 {% block body %}
-    <main>
-        <div class="container pt-4">
-            <h1>Register</h1>
+    <!-- Formulaire d'enregistrement -->
+    <div class="container my-5" style="width: 400px">
+        <form method="post">
+            <div class="text-center mb-3">
+                <h1 class="text-center mb-4">Créer un compte</h1>
 
-            {{ form_errors(registrationForm) }}
+                {{ form_start(registrationForm) }}
 
-            {{ form_start(registrationForm) }}
-                {{ form_row(registrationForm.firstname) }}
-                {{ form_row(registrationForm.name) }}
-                {{ form_row(registrationForm.email) }}
-                {{ form_row(registrationForm.plainPassword, {
-                    label: 'Password'
+                <div data-mdb-input-init class="form-outline my-4">
+                    {{ form_widget(registrationForm.name, {
+                        'attr': {'class': 'form-control', 'id': 'registerName'}
+                    }) }}
+                    <label class="form-label" for="registerName">Nom</label>
+                    {{ form_errors(registrationForm.name) }}
+                </div>
+
+                <div data-mdb-input-init class="form-outline mb-4">
+                    {{ form_widget(registrationForm.firstname, {
+                        'attr': {'class': 'form-control', 'id': 'registerFirstname'}
+                    }) }}
+                    <label class="form-label" for="registerFirstname">Prénom</label>
+                    {{ form_errors(registrationForm.firstname) }}
+                </div>
+
+                <div data-mdb-input-init class="form-outline mb-4">
+                    {{ form_widget(registrationForm.email, {
+                        'attr': {'class': 'form-control', 'id': 'registerEmail'}
+                    }) }}
+                    <label class="form-label" for="registerEmail">Email</label>
+                    {{ form_errors(registrationForm.email) }}
+                </div>
+
+                <div data-mdb-input-init class="form-outline mb-4">
+                    {{ form_widget(registrationForm.plainPassword, {
+                        'attr': {'class': 'form-control', 'id': 'registerPlainPassword'}
+                    }) }}
+                    <label class="form-label" for="registerPlainPassword">Mot de passe</label>
+                    {% if registrationForm.plainPassword.vars.errors|length > 0 %}
+                        <div class="invalid-feedback d-block">{{ registrationForm.plainPassword.vars.errors[0].message }}</div>
+                    {% endif %}
+                </div>
+
+                <div data-mdb-input-init class="form-outline mb-4">
+                    {{ form_widget(registrationForm.repeatPassword, {
+                        'attr': {'class': 'form-control', 'id': 'registerRepeatPassword'}
+                    }) }}
+                    <label class="form-label" for="registerRepeatPassword">Répéter mot de passe</label>
+                    {% if registrationForm.repeatPassword.vars.errors|length > 0 %}
+                        <div class="invalid-feedback d-block">{{ registrationForm.repeatPassword.vars.errors[0].message }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-check d-flex justify-content-center mb-4">
+                    {{ form_widget(registrationForm.agreeTerms, {
+                        'attr': {'class': 'form-check-input me-2', 'id': 'registerCheck'}
+                    }) }}
+                </div>
+
+                {{ form_row(registrationForm.save, {
+                    'attr': {'class': 'btn btn-primary btn-block mb-3', 'data-mdb-ripple-init': ''}
                 }) }}
-                {{ form_row(registrationForm.agreeTerms) }}
+                
+                {{ form_end(registrationForm) }}
 
-                <button type="submit" class="btn">Register</button>
-            {{ form_end(registrationForm) }}
-        </div>
-    </main>
+            </div>
+        </form>
+    </div>
 {% endblock %}

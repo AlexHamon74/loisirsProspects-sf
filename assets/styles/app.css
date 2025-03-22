@@ -55,3 +55,7 @@ main {
     overflow-x: hidden;
     overflow-y: auto;
 }
+
+.invalid-feedback{
+    margin-top: -18px;
+}
