@@ -2,10 +2,12 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\But;
 use App\Entity\Saison;
 use App\Entity\User;
 use App\Entity\Equipe;
 use App\Entity\Rencontre;
+use App\Entity\Participation;
 use DateTimeImmutable;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -13,6 +15,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Faker\Factory;
 use App\Enum\Position;
 use App\Enum\TypeRencontre;
+use Doctrine\ORM\EntityManagerInterface;
 
 class AppFixtures extends Fixture
 {
@@ -46,6 +49,28 @@ class AppFixtures extends Fixture
         [
             ['ROLE_USER'], 'arnaud@lazzaroni.fr', 'test123', 'Lazzaroni', 'Arnaud', '1992-05-19', 188, 74, 26, NULL, 'now', 'Défenseur'
         ],
+        [
+            ['ROLE_USER'], 'otto@pitkanen.fr', 'test123', 'Pitkänen', 'Otto', '2003-01-18', 178, 77, 28, NULL, 'now', 'Attaquant'
+        ],
+        [
+            ['ROLE_USER'], 'antoine@goutefangea.fr', 'test123', 'Goutefangea', 'Antoine', '2004-12-15', 176, 63, 27, NULL, 'now', 'Attaquant'
+        ],
+        [
+            ['ROLE_USER'], 'enzo@lebouche.fr', 'test123', 'Lebouché', 'Enzo', '2004-11-13', 186, 84, 61, NULL, 'now', 'Attaquant'
+        ],
+        [
+            ['ROLE_USER'], 'kevin@richard.fr', 'test123', 'Richard', 'Kevin', '1997-03-13', 184, 84, 97, NULL, 'now', 'Défenseur'
+        ],
+    ];
+
+    const JOUEUR_RENCONTRE_VALENCE = [
+        '2024-10-05' => ['Richard', 'Lebouché', 'Goutefangea', 'Pitkänen', 'Lazzaroni'],
+        '2024-10-12' => ['Richard', 'Lebouché', 'Goutefangea'],
+    ];
+
+    const BUTEUR_RENCONTRE_VALENCE = [
+        '2024-10-05' => ['Maarni', 'Lebouché'],
+        '2024-10-12' => ['Pitkänen', 'Lazzaroni'],
     ];
 
     const RENCONTRES_VALENCE = [
@@ -111,7 +136,7 @@ class AppFixtures extends Fixture
         ],
     ];
 
-    public function __construct(private UserPasswordHasherInterface $hasher) {}
+    public function __construct(private UserPasswordHasherInterface $hasher, private EntityManagerInterface $entityManager) {}
 
     public function load(ObjectManager $manager): void
     {
@@ -135,6 +160,7 @@ class AppFixtures extends Fixture
         }
 
         // Envoi des modification en base pour avoir accès aux ID des équipes
+        // ------------------------------------------------------------------
         $manager->flush();
 
         // Ajout de l'admin
@@ -150,6 +176,7 @@ class AppFixtures extends Fixture
 
 
         // Joueurs de Valence
+        $joueurs = [];
         foreach(self::JOUEURS_VALENCE as $joueurData) {
             $joueur = new User();
             $joueur->setRoles($joueurData[0])
@@ -167,9 +194,12 @@ class AppFixtures extends Fixture
                 ->setEquipe($equipes['Valence']);
         
             $manager->persist($joueur);
+            $joueurs[] = $joueur;
+            $joueurs[$joueurData[3]] = $joueur;
         }
 
         // Rencontres de Valence
+        $rencontres = [];
         foreach(self::RENCONTRES_VALENCE as $rencontreData) {
             $rencontre = new Rencontre();
             $rencontre->setSaison($saison)
@@ -185,9 +215,37 @@ class AppFixtures extends Fixture
                 ->setHeure(new \DateTimeImmutable($rencontreData[9]));
 
             $manager->persist($rencontre);
+            $rencontres[] = $rencontre;
+            $rencontres[$rencontreData[2]] = $rencontre;
+        } 
+
+        // Envoi des modification en base pour avoir accès aux ID des joueurs et rencontres
+        // --------------------------------------------------------------------------------
+        $manager->flush();
+
+        // Ajout des participations par rencontre
+        foreach (self::JOUEUR_RENCONTRE_VALENCE as $date => $joueursData) {
+            foreach ($joueursData as $joueurNom) {
+                $participation = new Participation();
+                $participation->setRencontre($rencontres[$date])
+                    ->setUser($joueurs[$joueurNom]);
+
+                $manager->persist($participation);
+            }
         }
 
-        // Envoi des modification en base
+        // Ajout des buteurs par rencontre
+        foreach (self::BUTEUR_RENCONTRE_VALENCE as $date => $buteursData) {
+            foreach ($buteursData as $buteurNom) {
+                $but = new But();
+                $but->setRencontre($rencontres[$date])
+                    ->setUser($joueurs[$buteurNom]);
+
+                $manager->persist($but);
+            }
+        }
+
+        // Envoi finale des modification en base
         $manager->flush();
     }
 }
