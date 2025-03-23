@@ -80,22 +80,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private Collection $buts;
 
     /**
-     * @var Collection<int, Assistance>
-     */
-    #[ORM\OneToMany(targetEntity: Assistance::class, mappedBy: 'user')]
-    private Collection $assistances;
-
-    /**
      * @var Collection<int, Participation>
      */
     #[ORM\OneToMany(targetEntity: Participation::class, mappedBy: 'user')]
     private Collection $participations;
 
+    /**
+     * @var Collection<int, Assistance>
+     */
+    #[ORM\OneToMany(targetEntity: Assistance::class, mappedBy: 'user')]
+    private Collection $assistances;
+
     public function __construct()
     {
         $this->buts = new ArrayCollection();
-        $this->assistances = new ArrayCollection();
         $this->participations = new ArrayCollection();
+        $this->assistances = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -330,36 +330,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection<int, Assistance>
-     */
-    public function getAssistances(): Collection
-    {
-        return $this->assistances;
-    }
-
-    public function addAssistance(Assistance $assistance): static
-    {
-        if (!$this->assistances->contains($assistance)) {
-            $this->assistances->add($assistance);
-            $assistance->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAssistance(Assistance $assistance): static
-    {
-        if ($this->assistances->removeElement($assistance)) {
-            // set the owning side to null (unless already changed)
-            if ($assistance->getUser() === $this) {
-                $assistance->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection<int, Participation>
      */
     public function getParticipations(): Collection
@@ -383,6 +353,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($participation->getUser() === $this) {
                 $participation->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Assistance>
+     */
+    public function getAssistances(): Collection
+    {
+        return $this->assistances;
+    }
+
+    public function addAssistance(Assistance $assistance): static
+    {
+        if (!$this->assistances->contains($assistance)) {
+            $this->assistances->add($assistance);
+            $assistance->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAssistance(Assistance $assistance): static
+    {
+        if ($this->assistances->removeElement($assistance)) {
+            // set the owning side to null (unless already changed)
+            if ($assistance->getUser() === $this) {
+                $assistance->setUser(null);
             }
         }
 

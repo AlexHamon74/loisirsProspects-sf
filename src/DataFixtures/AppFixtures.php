@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Assistance;
 use App\Entity\But;
 use App\Entity\Saison;
 use App\Entity\User;
@@ -72,6 +73,18 @@ class AppFixtures extends Fixture
         '2024-10-05' => ['Maarni', 'Lebouché'],
         '2024-10-12' => ['Pitkänen', 'Lazzaroni'],
     ];
+
+    const ASSISTANCE_RENCONTRE_VALENCE = [
+        '2024-10-05' => [
+            'Maarni' => ['Richard', 'Pitkänen'], 
+            'Lebouché' => ['Goutefangea', 'Lazzaroni'],
+        ],
+        '2024-10-12' => [
+            'Pitkänen' => ['Lazzaroni'],
+            'Lazzaroni' => ['Maarni'],
+        ],
+    ];
+
 
     const RENCONTRES_VALENCE = [
         [
@@ -194,7 +207,6 @@ class AppFixtures extends Fixture
                 ->setEquipe($equipes['Valence']);
         
             $manager->persist($joueur);
-            $joueurs[] = $joueur;
             $joueurs[$joueurData[3]] = $joueur;
         }
 
@@ -215,7 +227,6 @@ class AppFixtures extends Fixture
                 ->setHeure(new \DateTimeImmutable($rencontreData[9]));
 
             $manager->persist($rencontre);
-            $rencontres[] = $rencontre;
             $rencontres[$rencontreData[2]] = $rencontre;
         } 
 
@@ -234,14 +245,27 @@ class AppFixtures extends Fixture
             }
         }
 
-        // Ajout des buteurs par rencontre
+        // Ajout des buteurs et des assistances par rencontre
         foreach (self::BUTEUR_RENCONTRE_VALENCE as $date => $buteursData) {
+            $buts = [];
             foreach ($buteursData as $buteurNom) {
                 $but = new But();
                 $but->setRencontre($rencontres[$date])
                     ->setUser($joueurs[$buteurNom]);
 
                 $manager->persist($but);
+                $buts[] = $but;
+
+                // Vérifier s'il y a des assistances pour ce but
+                if (isset(self::ASSISTANCE_RENCONTRE_VALENCE[$date][$buteurNom])) {
+                    foreach (self::ASSISTANCE_RENCONTRE_VALENCE[$date][$buteurNom] as $assistantNom) {
+                        $assistance = new Assistance();
+                        $assistance->setBut($but)
+                            ->setUser($joueurs[$assistantNom]);
+
+                        $manager->persist($assistance);
+                    }
+                }
             }
         }
 

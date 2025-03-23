@@ -17,7 +17,7 @@ class Assistance
     private ?User $user = null;
 
     #[ORM\ManyToOne(inversedBy: 'assistances')]
-    private ?Rencontre $rencontre = null;
+    private ?But $but = null;
 
     public function getId(): ?int
     {
@@ -36,14 +36,14 @@ class Assistance
         return $this;
     }
 
-    public function getRencontre(): ?Rencontre
+    public function getBut(): ?But
     {
-        return $this->rencontre;
+        return $this->but;
     }
 
-    public function setRencontre(?Rencontre $rencontre): static
+    public function setBut(?But $but): static
     {
-        $this->rencontre = $rencontre;
+        $this->but = $but;
 
         return $this;
     }

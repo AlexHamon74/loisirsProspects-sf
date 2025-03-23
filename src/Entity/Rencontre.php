@@ -57,12 +57,6 @@ class Rencontre
     private Collection $buts;
 
     /**
-     * @var Collection<int, Assistance>
-     */
-    #[ORM\OneToMany(targetEntity: Assistance::class, mappedBy: 'rencontre')]
-    private Collection $assistances;
-
-    /**
      * @var Collection<int, Participation>
      */
     #[ORM\OneToMany(targetEntity: Participation::class, mappedBy: 'rencontre')]
@@ -71,7 +65,6 @@ class Rencontre
     public function __construct()
     {
         $this->buts = new ArrayCollection();
-        $this->assistances = new ArrayCollection();
         $this->participations = new ArrayCollection();
     }
 
@@ -236,36 +229,6 @@ class Rencontre
             // set the owning side to null (unless already changed)
             if ($but->getRencontre() === $this) {
                 $but->setRencontre(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Assistance>
-     */
-    public function getAssistances(): Collection
-    {
-        return $this->assistances;
-    }
-
-    public function addAssistance(Assistance $assistance): static
-    {
-        if (!$this->assistances->contains($assistance)) {
-            $this->assistances->add($assistance);
-            $assistance->setRencontre($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAssistance(Assistance $assistance): static
-    {
-        if ($this->assistances->removeElement($assistance)) {
-            // set the owning side to null (unless already changed)
-            if ($assistance->getRencontre() === $this) {
-                $assistance->setRencontre(null);
             }
         }
 
