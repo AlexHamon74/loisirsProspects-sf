@@ -37,6 +37,9 @@ class Equipe
     #[ORM\OneToMany(targetEntity: User::class, mappedBy: 'equipe')]
     private Collection $users;
 
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $information_generale = null;
+
     public function __construct()
     {
         $this->rencontres = new ArrayCollection();
@@ -140,6 +143,18 @@ class Equipe
                 $user->setEquipe(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getInformationGenerale(): ?string
+    {
+        return $this->information_generale;
+    }
+
+    public function setInformationGenerale(?string $information_generale): static
+    {
+        $this->information_generale = $information_generale;
 
         return $this;
     }

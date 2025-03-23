@@ -127,7 +127,8 @@ class AppFixtures extends Fixture
         foreach(self::NOM_EQUIPE as $nom_equipe) {
             $equipe = new Equipe();
             $equipe->setNom($nom_equipe)
-                ->setUpdatedAt(new DateTimeImmutable());
+                ->setUpdatedAt(new DateTimeImmutable())
+                ->setInformationGenerale($generator->realTextBetween());
 
             $manager->persist($equipe);
             $equipes[$nom_equipe] = $equipe;
