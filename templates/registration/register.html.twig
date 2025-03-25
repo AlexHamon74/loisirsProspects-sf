@@ -37,22 +37,22 @@
                 </div>
 
                 <div data-mdb-input-init class="form-outline mb-4">
-                    {{ form_widget(registrationForm.plainPassword, {
+                    {{ form_widget(registrationForm.plainPassword.first, {
                         'attr': {'class': 'form-control', 'id': 'registerPlainPassword'}
                     }) }}
                     <label class="form-label" for="registerPlainPassword">Mot de passe</label>
-                    {% if registrationForm.plainPassword.vars.errors|length > 0 %}
-                        <div class="invalid-feedback d-block">{{ registrationForm.plainPassword.vars.errors[0].message }}</div>
+                    {% if registrationForm.plainPassword.first.vars.errors|length > 0 %}
+                        <div class="invalid-feedback d-block">{{ registrationForm.plainPassword.first.vars.errors[0].message }}</div>
                     {% endif %}
                 </div>
 
                 <div data-mdb-input-init class="form-outline mb-4">
-                    {{ form_widget(registrationForm.repeatPassword, {
+                    {{ form_widget(registrationForm.plainPassword.second, {
                         'attr': {'class': 'form-control', 'id': 'registerRepeatPassword'}
                     }) }}
                     <label class="form-label" for="registerRepeatPassword">Répéter mot de passe</label>
-                    {% if registrationForm.repeatPassword.vars.errors|length > 0 %}
-                        <div class="invalid-feedback d-block">{{ registrationForm.repeatPassword.vars.errors[0].message }}</div>
+                    {% if registrationForm.plainPassword.second.vars.errors|length > 0 %}
+                        <div class="invalid-feedback d-block">{{ registrationForm.plainPassword.second.vars.errors[0].message }}</div>
                     {% endif %}
                 </div>
 

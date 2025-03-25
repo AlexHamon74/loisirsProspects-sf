@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -35,35 +36,35 @@ class RegistrationFormType extends AbstractType
                 'required' => false,
             ])
 
-            ->add('plainPassword', PasswordType::class, [
+            ->add('plainPassword', RepeatedType::class, [
+                'type' => PasswordType::class,
+                'invalid_message' => 'Les mots de passe ne correspondent pas',
                 'required' => false,
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Ce champ est obligatoire.',
-                    ]),
-                    new Length([
-                        'min' => 6,
-                        'minMessage' => 'Votre mot de passe doit faire au moins {{ limit }} caractères',
-                        'max' => 4096,
-                    ]),
+                'first_options' => [
+                    'constraints' => [
+                        new NotBlank([
+                            'message' => 'Ce champ est obligatoire.',
+                        ]),
+                        new Length([
+                            'min' => 6,
+                            'minMessage' => 'Votre mot de passe doit faire au moins {{ limit }} caractères',
+                            'max' => 4096,
+                        ]),
+                    ],
                 ],
-            ])
-
-            ->add('repeatPassword', PasswordType::class, [
-                'required' => false,
-                'mapped' => false,
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Ce champ est obligatoire.',
-                    ]),
-                    new Length([
-                        'min' => 6,
-                        'minMessage' => 'Votre mot de passe doit faire au moins {{ limit }} caractères',
-                        'max' => 4096,
-                    ]),
-                    new Callback([$this, 'validatePasswords']),
+                'second_options' => [
+                    'constraints' => [
+                        new NotBlank([
+                            'message' => 'Ce champ est obligatoire.',
+                        ]),
+                        new Length([
+                            'min' => 6,
+                            'minMessage' => 'Votre mot de passe doit faire au moins {{ limit }} caractères',
+                            'max' => 4096,
+                        ]),
+                    ],
                 ],
             ])
 
@@ -81,21 +82,7 @@ class RegistrationFormType extends AbstractType
             ->add('save', SubmitType::class, ['label' => "S'enregistrer"])
         ;
     }
-
-    // Fonction pour vérifier si les deux mot de passes entrés sont identiques
-    public function validatePasswords($object, ExecutionContextInterface $context): void
-    {
-        $form = $context->getRoot();
-        $plainPassword = $form->get('plainPassword')->getData();
-        $repeatPassword = $form->get('repeatPassword')->getData();
-
-        if ($plainPassword !== $repeatPassword) {
-            $context->buildViolation('Les mots de passe doivent être identiques.')
-                ->atPath('repeatPassword')
-                ->addViolation();
-        }
-    }
-
+    
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
