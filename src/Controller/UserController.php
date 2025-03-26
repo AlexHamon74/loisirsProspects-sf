@@ -17,6 +17,13 @@ class UserController extends AbstractController
     #[Route('/mon_profil/{id}', name: 'mon_profil')]
     public function monProfil(User $user, EntityManagerInterface $em, Request $request): Response
     {
+        // Vérifie qu'il sagit bien de l'utilisateur connecté
+        if($this->getUser() !== $user)  {
+            $currentUser = $this->getUser();
+            if ($currentUser instanceof User) {
+                return $this->redirectToRoute('mon_profil', ['id' => $currentUser->getId()]);
+            }
+        }
 
         $form = $this->createForm(MonProfilType::class, $user);
         $form->handleRequest($request);
