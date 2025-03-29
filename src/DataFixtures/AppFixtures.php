@@ -132,8 +132,8 @@ class AppFixtures extends Fixture
         '2025-02-08' => ['Riffard', 'Plenet', 'Tkachenko', 'Rodriguez.Q', 'Clement', 'Bortino', 'Zinger', 'Baskov', 'Lazzaroni', 'Pitkänen', 'Maarni', 'Rodriguez.A', 'Dudkin', 'Amouriq', 'Klyuev', 'Dousseau', 'Briancon', 'Richard'],
         '2025-02-12' => ['Riffard', 'Plenet', 'Tkachenko', 'Rodriguez.Q', 'Clement', 'Bortino', 'Zinger', 'Baskov', 'Lazzaroni', 'Pitkänen', 'Maarni', 'Rodriguez.A', 'Dudkin', 'Pelisse', 'Amouriq', 'Klyuev', 'Dousseau', 'Briancon', 'Richard'],
         '2025-02-22' => ['Riffard', 'Plenet', 'Tkachenko', 'Rodriguez.Q', 'Clement', 'Bortino', 'Zinger', 'Baskov', 'Lazzaroni', 'Pitkänen', 'Maarni', 'Rodriguez.A', 'Dudkin', 'Pelisse', 'Amouriq', 'Klyuev', 'Dousseau', 'Briancon', 'Richard'],
-        '2025-03-01' => ['Riffard', 'Plenet', 'Tkachenko', 'Rodriguez.Q', 'Clement', 'Bortino', 'Zinger', 'Baskov', 'Lazzaroni', 'Pitkänen', 'Maarni', 'Rodriguez.A', 'Dudkin', 'Pelisse', 'Amouriq', 'Klyuev', 'Dousseau', 'Briancon', 'Richard'],
-        '2025-03-08' => ['Riffard', 'Plenet', 'Tkachenko', 'Rodriguez.Q', 'Clement', 'Bortino', 'Zinger', 'Baskov', 'Lazzaroni', 'Pitkänen', 'Maarni', 'Rodriguez.A', 'Dudkin', 'Pelisse', 'Amouriq', 'Klyuev', 'Dousseau', 'Briancon', 'Richard'],
+        // '2025-03-01' => ['Riffard', 'Plenet', 'Tkachenko', 'Rodriguez.Q', 'Clement', 'Bortino', 'Zinger', 'Baskov', 'Lazzaroni', 'Pitkänen', 'Maarni', 'Rodriguez.A', 'Dudkin', 'Pelisse', 'Amouriq', 'Klyuev', 'Dousseau', 'Briancon', 'Richard'],
+        // '2025-03-08' => ['Riffard', 'Plenet', 'Tkachenko', 'Rodriguez.Q', 'Clement', 'Bortino', 'Zinger', 'Baskov', 'Lazzaroni', 'Pitkänen', 'Maarni', 'Rodriguez.A', 'Dudkin', 'Pelisse', 'Amouriq', 'Klyuev', 'Dousseau', 'Briancon', 'Richard'],
     ];
 
     const BUTEUR_RENCONTRE_VALENCE = [
@@ -154,9 +154,9 @@ class AppFixtures extends Fixture
         '2025-01-25' => ['Maarni', 'Dousseau', 'Maarni', 'Baskov', 'Baskov', 'Dudkin', 'Pitkänen'],
         '2025-02-08' => ['Maarni', 'Lazzaroni', 'Maarni', 'Bortino', 'Zinger'],
         '2025-02-12' => ['Dudkin', 'Dudkin', 'Dudkin', 'Pitkänen', 'Briancon', 'Bortino', 'Dudkin', 'Maarni'],
-        '2025-02-22' => ['Dudkin', 'Dudkin', 'Dudkin', 'Pitkänen', 'Briancon', 'Bortino', 'Dudkin', 'Maarni'],
-        '2025-03-01' => ['Maarni', 'Baskov', 'Dudkin', 'Dudkin', 'Dudkin', 'Bortino'],
-        '2025-03-08' => ['Clement', 'Dudkin', 'Baskov', 'Richard', 'Bortino', 'Plenet', 'Dudkin'],
+        '2025-02-22' => ['Dudkin', 'Bortino', 'Maarni'],
+        // '2025-03-01' => ['Maarni', 'Baskov', 'Dudkin', 'Dudkin', 'Dudkin', 'Bortino'],
+        // '2025-03-08' => ['Clement', 'Dudkin', 'Baskov', 'Richard', 'Bortino', 'Plenet', 'Dudkin'],
     ];
 
     const ASSISTANCE_RENCONTRE_VALENCE = [
@@ -186,7 +186,7 @@ class AppFixtures extends Fixture
         '2024-11-09' => [
             'Baskov' => ['Plenet', 'Riffard'],
             'Richard' => ['Lazzaroni', 'Dudkin'],
-            'Plenet' => ['Baskov', 'Plenet'],
+            'Plenet' => ['Dudkin', 'Lazzaroni'],
             'Pitkänen' => ['Maarni', 'Klyuev'],
             'Dudkin' => ['Clement', 'Klyuev'],
             'Baskov' => ['Lazzaroni', 'Richard'],
@@ -206,7 +206,8 @@ class AppFixtures extends Fixture
         '2024-11-30' => [
             'Dousseau' => ['Dudkin'],
             'Pelisse' => ['Maarni', 'Zinger'],
-            'Baskov' => ['Rifard', 'Lazzaroni'],
+            'Baskov' => ['Riffard', 'Lazzaroni'],
+            'Plenet' => ['Dudkin', 'Baskov'],
             'Dudkin' => ['Baskov'],
             'Dudkin' => [],
             'Dudkin' => ['Lazzaroni', 'Klyuev'],
@@ -275,23 +276,23 @@ class AppFixtures extends Fixture
             'Bortino' => ['Maarni'],
             'Maarni' => ['Zinger', 'Dousseau'],
         ],
-        '2025-03-01' => [
-            'Maarni' => ['Pitkänen', 'Zinger'],
-            'Baskov' => ['Lazzaroni', 'Dudkin'],
-            'Dudkin' => ['Lazzaroni', 'Baskov'],
-            'Dudkin' => ['Baskov', 'Klyuev'],
-            'Dudkin' => ['Lazzaroni', 'Baskov'],
-            'Bortino' => ['Lazzaroni'],
-        ],
-        '2025-03-08' => [
-            'Clement' => ['Riffard'],
-            'Dudkin' => ['Baskov'],
-            'Baskov' => ['Lazzaroni', 'Dudkin'],
-            'Richard' => ['Dudkin', 'Klyuev'],
-            'Bortino' => ['Pitkänen'],
-            'Plenet' => ['Pelisse', 'Clement'],
-            'Dudkin' => ['Tkachenko'],
-        ],
+        // '2025-03-01' => [
+        //     'Maarni' => ['Pitkänen', 'Zinger'],
+        //     'Baskov' => ['Lazzaroni', 'Dudkin'],
+        //     'Dudkin' => ['Lazzaroni', 'Baskov'],
+        //     'Dudkin' => ['Baskov', 'Klyuev'],
+        //     'Dudkin' => ['Lazzaroni', 'Baskov'],
+        //     'Bortino' => ['Lazzaroni'],
+        // ],
+        // '2025-03-08' => [
+        //     'Clement' => ['Riffard'],
+        //     'Dudkin' => ['Baskov'],
+        //     'Baskov' => ['Lazzaroni', 'Dudkin'],
+        //     'Richard' => ['Dudkin', 'Klyuev'],
+        //     'Bortino' => ['Pitkänen'],
+        //     'Plenet' => ['Pelisse', 'Clement'],
+        //     'Dudkin' => ['Tkachenko'],
+        // ],
     ];
 
 
@@ -350,12 +351,12 @@ class AppFixtures extends Fixture
         [
             'Annecy', 'Valence', '2025-02-22', 7, 3, 'Championnat', NULL, 'now', 'Annecy - Jean Régis', '20:30:00'
         ],
-        [
-            'Francais volants', 'Valence', '2025-03-01', 4, 6, 'Playoffs', NULL, 'now', 'Paris Bercy - Sonja Henie', '18:40:00'
-        ],
-        [
-            'Valence', 'Francais volants', '2025-03-08', 7, 0, 'Playoffs', NULL, 'now', 'Valence - Le Polygone', '20:30:00'
-        ],
+        // [
+        //     'Francais volants', 'Valence', '2025-03-01', 4, 6, 'Playoffs', NULL, 'now', 'Paris Bercy - Sonja Henie', '18:40:00'
+        // ],
+        // [
+        //     'Valence', 'Francais volants', '2025-03-08', 7, 0, 'Playoffs', NULL, 'now', 'Valence - Le Polygone', '20:30:00'
+        // ],
     ];
 
     public function __construct(private UserPasswordHasherInterface $hasher, private EntityManagerInterface $entityManager) {}

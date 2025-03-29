@@ -1,0 +1,58 @@
+<table id="statsTable" class="hover row-border w-100 stripe">
+    <thead>
+        <tr>
+            <th scope="col">Rang</th>
+            <th scope="col">Photo</th>
+            <th scope="col">Joueur</th>
+            <th scope="col">Pos</th>
+            <th scope="col">Equipe</th>
+            <th scope="col">MJ</th>
+            <th scope="col">B</th>
+            <th scope="col">A</th>
+            <th scope="col">Pts</th>
+            <th scope="col">Pts/match</th>
+            <th scope="col">PEN</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+            {% if user.roles[0] != "ROLE_RESPONSABLE" and user.position.value != "Gardien" %}
+                
+                <tr>
+                    <td></td>
+                    <td>{{ user.profilPicture }}</td>
+                    <td>{{ user.firstname }} {{ user.name }}</td>
+                    <td>{{ user.position.value }}</td>
+                    <td>{{ user.equipe.nom }}</td>
+                    <td>{{ user.participations|length }}</td>
+                    <td>{{ user.buts|length }}</td>
+                    <td>{{ user.assistances|length }}</td>
+                    <td>{{ user.buts|length + user.assistances|length }}</td>
+                    <td>
+                        {% if user.participations|length > 0 %}
+                            {{ ((user.buts|length + user.assistances|length) / user.participations|length)|number_format(2, '.', ',') }}
+                        {% else %}
+                            0
+                        {% endif %}
+                    </td>
+                    <td>/</td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </tbody>
+</table>
+
+<script>
+    $('#statsTable').DataTable({
+        responsive: true,
+        language: {
+            info: 'Affichage de la page _PAGE_ sur _PAGES_',
+            infoEmpty: 'Aucun enregistrement disponible',
+            infoFiltered: '(filtré à partir de _MAX_ enregistrements au total)',
+            lengthMenu: 'Afficher _MENU_ lignes par page',
+            zeroRecords: 'Aucun résultat trouvé',
+            search: 'Rechercher:'
+        },
+        order: [[8, 'desc']] 
+    });
+</script>
