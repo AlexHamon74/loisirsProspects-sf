@@ -161,120 +161,120 @@ class AppFixtures extends Fixture
 
     const ASSISTANCE_RENCONTRE_VALENCE = [
         '2024-10-05' => [
-            'Maarni' => ['Lebouché'], 
-            'Lazzaroni' => ['Richard', 'Dudkin'],
-            'Dousseau' => ['Lazzaroni', 'Dudkin'],
-            'Richard' => ['Maarni', 'Goutefangea'],
-            'Plenet' => ['Dudkin'], 
-            'Pitkänen' => ['Maarni'], 
+            'Maarni_0' => ['Lebouché'], 
+            'Lazzaroni_0' => ['Richard', 'Dudkin'],
+            'Dousseau_0' => ['Lazzaroni', 'Dudkin'],
+            'Richard_0' => ['Maarni', 'Goutefangea'],
+            'Plenet_0' => ['Dudkin'], 
+            'Pitkänen_0' => ['Maarni'], 
         ],
         '2024-10-12' => [],
         '2024-10-19' => [
-            'Maarni' => ['Dudkin', 'Lazzaroni'],
-            'Pitkänen' => [],
+            'Maarni_0' => ['Dudkin', 'Lazzaroni'],
+            'Pitkänen_0' => [],
         ],
         '2024-10-26' => [
-            'Pelisse' => ['Clement', 'Lazzaroni'],
-            'Lavorel' => ['Baskov'],
-            'Plenet' => ['Baskov', 'Dousseau'],
+            'Pelisse_0' => ['Clement', 'Lazzaroni'],
+            'Lavorel_0' => ['Baskov'],
+            'Plenet_0' => ['Baskov', 'Dousseau'],
         ],
         '2024-11-02' => [
-            'Dudkin' => ['Maarni', 'Lazzaroni'],
-            'Klyuev' => ['Baskov', 'Dudkin'],
-            'Dudkin' => ['Baskov', 'Plenet'],
+            'Dudkin_0' => ['Maarni', 'Lazzaroni'],
+            'Klyuev_0' => ['Baskov', 'Dudkin'],
+            'Dudkin_1' => ['Baskov', 'Plenet'],
         ],
         '2024-11-09' => [
-            'Baskov' => ['Plenet', 'Riffard'],
-            'Richard' => ['Lazzaroni', 'Dudkin'],
-            'Plenet' => ['Dudkin', 'Lazzaroni'],
-            'Pitkänen' => ['Maarni', 'Klyuev'],
-            'Dudkin' => ['Clement', 'Klyuev'],
-            'Baskov' => ['Lazzaroni', 'Richard'],
+            'Baskov_0' => ['Plenet', 'Riffard'],
+            'Richard_0' => ['Lazzaroni', 'Dudkin'],
+            'Plenet_0' => ['Dudkin', 'Lazzaroni'],
+            'Pitkänen_0' => ['Maarni', 'Klyuev'],
+            'Dudkin_0' => ['Clement', 'Klyuev'],
+            'Baskov_1' => ['Lazzaroni', 'Richard'],
         ],
         '2024-11-16' => [
-            'Lazzaroni' => ['Pelisse', 'Favarin'],
-            'Dudkin' => ['Baskov', 'Klyuev'],
-            'Pelisse' => ['Baskov'],
+            'Lazzaroni_0' => ['Pelisse', 'Favarin'],
+            'Dudkin_0' => ['Baskov', 'Klyuev'],
+            'Pelisse_0' => ['Baskov'],
         ],
         '2024-11-23' => [
-            'Dudkin' => ['Baskov', 'Klyuev'],
-            'Maarni' => ['Rodriguez.A', 'Zinger'],
-            'Dudkin' => ['Baskov', 'Plenet'],
-            'Pitkänen' => ['Maarni', 'Klyuev'],
-            'Klyuev' => ['Baskov', 'Pelisse'],
+            'Dudkin_0' => ['Baskov', 'Klyuev'],
+            'Maarni_0' => ['Rodriguez.A', 'Zinger'],
+            'Dudkin_1' => ['Baskov', 'Plenet'],
+            'Pitkänen_0' => ['Maarni', 'Klyuev'],
+            'Klyuev_0' => ['Baskov', 'Pelisse'],
         ],
         '2024-11-30' => [
-            'Dousseau' => ['Dudkin'],
-            'Pelisse' => ['Maarni', 'Zinger'],
-            'Baskov' => ['Riffard', 'Lazzaroni'],
-            'Plenet' => ['Dudkin', 'Baskov'],
-            'Dudkin' => ['Baskov'],
-            'Dudkin' => [],
-            'Dudkin' => ['Lazzaroni', 'Klyuev'],
-            'Baskov' => [],
+            'Dousseau_0' => ['Dudkin'],
+            'Pelisse_0' => ['Maarni', 'Zinger'],
+            'Baskov_0' => ['Riffard', 'Lazzaroni'],
+            'Plenet_0' => ['Dudkin', 'Baskov'],
+            'Dudkin_0' => ['Baskov'],
+            'Dudkin_1' => [],
+            'Dudkin_2' => ['Lazzaroni', 'Klyuev'],
+            'Baskov_0' => [],
         ],
         '2024-12-07' => [
-            'Klyuev' => ['Briancon', 'Dousseau'],
+            'Klyuev_0' => ['Briancon', 'Dousseau'],
         ],
         '2024-12-14' => [
-            'Pitkänen' => ['Maarni', 'Dudkin'],
-            'Dudkin' => ['Maarni', 'Pitkänen'],
-            'Dudkin' => ['Pitkänen'],
-            'Dudkin' => ['Klyuev'],
+            'Pitkänen_0' => ['Maarni', 'Dudkin'],
+            'Dudkin_0' => ['Maarni', 'Pitkänen'],
+            'Dudkin_1' => ['Pitkänen'],
+            'Dudkin_2' => ['Klyuev'],
         ],
         '2024-12-21' => [
-            'Klyuev' => ['Lahssini', 'Bortino'],
-            'Richard' => ['Baskov', 'Lazzaroni'],
-            'Bortino' => ['Pitkänen'],
-            'Dudkin' => ['Baskov', 'Lazzaroni'],
+            'Klyuev_0' => ['Lahssini', 'Bortino'],
+            'Richard_0' => ['Baskov', 'Lazzaroni'],
+            'Bortino_0' => ['Pitkänen'],
+            'Dudkin_0' => ['Baskov', 'Lazzaroni'],
         ],
         '2025-01-11' => [
-            'Maarni' => ['Zinger'],
-            'Dudkin' => ['Baskov', 'Plenet'],
-            'Maarni' => ['Pitkänen', 'Lazzaroni'],
-            'Pelisse' => ['Pitkänen', 'Maarni'],
-            'Lazzaroni' => ['Maarni', 'Bortino'],
-            'Maarni' => ['Pitkänen', 'Zinger'],
-            'Maarni' => ['Dousseau', 'Bortino'],
-            'Pelisse' => ['Dudkin', 'Klyuev'],
-            'Baskov' => ['Dudkin', 'Maarni'],
+            'Maarni_0' => ['Zinger'],
+            'Dudkin_0' => ['Baskov', 'Plenet'],
+            'Maarni_1' => ['Pitkänen', 'Lazzaroni'],
+            'Pelisse_0' => ['Pitkänen', 'Maarni'],
+            'Lazzaroni_0' => ['Maarni', 'Bortino'],
+            'Maarni_2' => ['Pitkänen', 'Zinger'],
+            'Maarni_3' => ['Dousseau', 'Bortino'],
+            'Pelisse_1' => ['Dudkin', 'Klyuev'],
+            'Baskov_0' => ['Dudkin', 'Maarni'],
         ],
         '2025-01-18' => [
-            'Baskov' => ['Dudkin', 'Plenet'],
-            'Dudkin' => ['Baskov', 'Lazzaroni'],
-            'Baskov' => ['Dudkin'],
-            'Dudkin' => ['Baskov', 'Plenet'],
+            'Baskov_0' => ['Dudkin', 'Plenet'],
+            'Dudkin_0' => ['Baskov', 'Lazzaroni'],
+            'Baskov_1' => ['Dudkin'],
+            'Dudkin_1' => ['Baskov', 'Plenet'],
         ],
         '2025-01-25' => [
-            'Maarni' => ['Pitkänen'],
-            'Dousseau' => ['Zinger', 'Pitkänen'],
-            'Maarni' => ['Baskov'],
-            'Baskov' => ['Lazzaroni', 'Klyuev'],
-            'Baskov' => ['Lazzaroni', 'Dudkin'],
-            'Dudkin' => [],
-            'Pitkänen' => ['Zinger', 'Bortino'],
+            'Maarni_0' => ['Pitkänen'],
+            'Dousseau_0' => ['Zinger', 'Pitkänen'],
+            'Maarni_1' => ['Baskov'],
+            'Baskov_0' => ['Lazzaroni', 'Klyuev'],
+            'Baskov_1' => ['Lazzaroni', 'Dudkin'],
+            'Dudkin_0' => [],
+            'Pitkänen_0' => ['Zinger', 'Bortino'],
         ],
         '2025-02-08' => [
-            'Maarni' => ['Pitkänen', 'Bortino'],
-            'Lazzaroni' => ['Plenet', 'Baskov'],
-            'Maarni' => ['Zinger'],
-            'Bortino' => ['Maarni'],
-            'Zinger' => [],
+            'Maarni_0' => ['Pitkänen', 'Bortino'],
+            'Lazzaroni_0' => ['Plenet', 'Baskov'],
+            'Maarni_1' => ['Zinger'],
+            'Bortino_0' => ['Maarni'],
+            'Zinger_0' => [],
         ],
         '2025-02-12' => [
-            'Dudkin' => ['Lazzaroni', 'Plenet'],
-            'Dudkin' => ['Lazzaroni', 'Baskov'],
-            'Dudkin' => ['Zinger', 'Baskov'],
-            'Pitkänen' => ['Maarni', 'Zinger'],
-            'Briancon' => ['Dudkin', 'Plenet'],
-            'Bortino' => ['Maarni', 'Pitkänen'],
-            'Dudkin' => ['Plenet', 'Baskov'],
-            'Maarni' => ['Bortino', 'Riffard'],
+            'Dudkin_0' => ['Lazzaroni', 'Plenet'],
+            'Dudkin_1' => ['Lazzaroni', 'Baskov'],
+            'Dudkin_2' => ['Zinger', 'Baskov'],
+            'Pitkänen_0' => ['Maarni', 'Zinger'],
+            'Briancon_0' => ['Dudkin', 'Plenet'],
+            'Bortino_0' => ['Maarni', 'Pitkänen'],
+            'Dudkin_3' => ['Plenet', 'Baskov'],
+            'Maarni_0' => ['Bortino', 'Riffard'],
         ],
         '2025-02-22' => [
-            'Dudkin' => ['Baskov', 'Klyuev'],
-            'Bortino' => ['Maarni'],
-            'Maarni' => ['Zinger', 'Dousseau'],
+            'Dudkin_0' => ['Baskov', 'Klyuev'],
+            'Bortino_0' => ['Maarni'],
+            'Maarni_0' => ['Zinger', 'Dousseau'],
         ],
         // '2025-03-01' => [
         //     'Maarni' => ['Pitkänen', 'Zinger'],
@@ -458,6 +458,7 @@ class AppFixtures extends Fixture
         // Ajout des buteurs et des assistances par rencontre
         foreach (self::BUTEUR_RENCONTRE_VALENCE as $date => $buteursData) {
             $buts = [];
+            $buteurCounters = []; // Compteur pour chaque buteur
             foreach ($buteursData as $buteurNom) {
                 $but = new But();
                 $but->setRencontre($rencontres[$date])
@@ -466,9 +467,16 @@ class AppFixtures extends Fixture
                 $manager->persist($but);
                 $buts[] = $but;
 
+                // Initialiser ou incrémenter le compteur pour le buteur
+                if (!isset($buteurCounters[$buteurNom])) {
+                    $buteurCounters[$buteurNom] = 0;
+                }
+                $buteurIndex = $buteurCounters[$buteurNom]++;
+                
                 // Vérifier s'il y a des assistances pour ce but
-                if (isset(self::ASSISTANCE_RENCONTRE_VALENCE[$date][$buteurNom])) {
-                    foreach (self::ASSISTANCE_RENCONTRE_VALENCE[$date][$buteurNom] as $assistantNom) {
+                $assistanceKey = "{$buteurNom}_{$buteurIndex}";
+                if (isset(self::ASSISTANCE_RENCONTRE_VALENCE[$date][$assistanceKey])) {
+                    foreach (self::ASSISTANCE_RENCONTRE_VALENCE[$date][$assistanceKey] as $assistantNom) {
                         $assistance = new Assistance();
                         $assistance->setBut($but)
                             ->setUser($joueurs[$assistantNom]);
