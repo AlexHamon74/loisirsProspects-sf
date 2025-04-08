@@ -34,36 +34,38 @@
 					{% include 'vue_commune/information_generale.html.twig' %}
 				</div>
 				<div class="tab-pane fade" id="_effectif" role="tabpanel" aria-labelledby="effectif">
-					<table id="usersTable" class="hover row-border w-100 stripe">
-						<thead>
-							<tr>
-								<th scope="col">N°</th>
-								<th scope="col">Photo</th>
-								<th scope="col">Joueur</th>
-								<th scope="col">Pos</th>
-								<th scope="col">Taille</th>
-								<th scope="col">Poids</th>
-								<th scope="col">Né le</th>
-								<th scope="col">Lancer</th>
-								<th scope="col">Nationnalité</th>
-							</tr>
-						</thead>
-						<tbody>
-							{% for user in users %}
+					<div class="table-responsive">
+						<table id="usersTable" class="hover row-border w-100 stripe">
+							<thead>
 								<tr>
-									<td>{{ user.jerseyNumber }}</td>
-									<td>{{ user.profilPicture }}</td>
-									<td>{{ user.firstname }} {{ user.name }}</td>
-									<td>{{ user.position.value }}</td>
-									<td>{{ user.height }}</td>
-									<td>{{ user.weight }}</td>
-									<td>{{ user.birthdate|date('Y') }}</td>
-									<td>Todo</td>
-									<td>Todo</td>
+									<th scope="col">N°</th>
+									<th scope="col">Photo</th>
+									<th scope="col">Joueur</th>
+									<th scope="col">Pos</th>
+									<th scope="col">Taille</th>
+									<th scope="col">Poids</th>
+									<th scope="col">Né le</th>
+									<th scope="col">Lancer</th>
+									<th scope="col">Nationnalité</th>
 								</tr>
-							{% endfor %}
-						</tbody>
-					</table>
+							</thead>
+							<tbody>
+								{% for user in users %}
+									<tr>
+										<td>{{ user.jerseyNumber }}</td>
+										<td>{{ user.profilPicture }}</td>
+										<td>{{ user.firstname }} {{ user.name }}</td>
+										<td>{{ user.position.value }}</td>
+										<td>{{ user.height }}</td>
+										<td>{{ user.weight }}</td>
+										<td>{{ user.birthdate|date('Y') }}</td>
+										<td>Todo</td>
+										<td>Todo</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
 				</div>
 				<div class="tab-pane fade" id="_stats_indiv" role="tabpanel" aria-labelledby="stats_indiv">
 					{% include 'vue_commune/equipe_statistique_individuelle.html.twig' %}
